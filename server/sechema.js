@@ -8,6 +8,10 @@ const studentSchema = new Schema({
     required: true, 
     trim: true, 
   },
+  password: {
+    type: String,
+    required: true 
+  },
   roll: {
     type: String,
     required: true, 
