@@ -15,13 +15,13 @@ app.use(cookieParser());
 
 
 app.get('/', (req, res) => {
-  res.send('Welcome to the Homepage!');
+  res.send('hello world !');
 });
 
 
 app.post('/user', async (req, res) => {
-  const { name, roll, class: studentClass, department } = req.body;
-  if (!name || !roll || !studentClass || !department) {
+  const { name, roll, password, class: studentClass, department } = req.body;
+  if (!name || !roll || ! password || !studentClass || !department) {
     return res.status(400).json({ error: 'All fields (name, roll, class, department) are required.' });
   }
 
@@ -29,6 +29,7 @@ app.post('/user', async (req, res) => {
     const newStudent = new Student({
       name,
       roll,
+      password,
       class: studentClass, 
       department,
     });
