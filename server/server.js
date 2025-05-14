@@ -42,14 +42,14 @@ app.post('/user', async (req, res) => {
 
 
 app.post('/login', async (req, res) => {
-  const { name, roll } = req.body;
+  const { password, roll } = req.body;
 
   if (!name || !roll) {
     return res.status(400).json({ error: 'Both name and roll are required.' });
   }
 
   try {
-    const student = await Student.findOne({ name, roll });
+    const student = await Student.findOne({ password, roll });
 
     if (student) {
       res.cookie('login', 'true', {
